@@ -1,4 +1,5 @@
-use email_client::{configuration::get_configuration, run};
+use email_client::configuration::get_configuration;
+use email_client::startup::run;
 use sqlx::PgPool;
 use std::net::TcpListener;
 
