@@ -26,19 +26,19 @@ services:
     # All incoming requests should be routed to our app
     routes:
       - path: /
-    envs:
-      - key: APP_DATABASE__USERNAME
-        scope: RUN_TIME
-        value: PGUSER
-      - key: APP_DATABASE__PASSWORD
-        scope: RUN_TIME
-        value: PGPASSWORD
-      - key: APP_DATABASE__HOST
-        scope: RUN_TIME
-        value: PGHOST
-      - key: APP_DATABASE__PORT
-        scope: RUN_TIME
-        value: PGPORT
-      - key: APP_DATABASE__DATABASE_NAME
-        scope: RUN_TIME
-        value: PGDATABASE
+    # envs:
+    #   - key: APP_DATABASE__USERNAME
+    #     scope: RUN_TIME
+    #     value: PGUSER
+    #   - key: APP_DATABASE__PASSWORD
+    #     scope: RUN_TIME
+    #     value: PGPASSWORD
+    #   - key: APP_DATABASE__HOST
+    #     scope: RUN_TIME
+    #     value: PGHOST
+    #   - key: APP_DATABASE__PORT
+    #     scope: RUN_TIME
+    #     value: PGPORT
+    #   - key: APP_DATABASE__DATABASE_NAME
+    #     scope: RUN_TIME
+    #     value: PGDATABASE
