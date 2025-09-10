@@ -9,7 +9,7 @@ services:
     dockerfile_path: Dockerfile
     source_dir: .
     github:
-      branch: main
+      branch: root-chapter-05
       deploy_on_push: true
       repo: florianblaschke/email-client
     # Active probe used by DigitalOcean's to ensure our application is healthy
@@ -26,19 +26,29 @@ services:
     # All incoming requests should be routed to our app
     routes:
       - path: /
-    # envs:
-    #   - key: APP_DATABASE__USERNAME
-    #     scope: RUN_TIME
-    #     value: PGUSER
-    #   - key: APP_DATABASE__PASSWORD
-    #     scope: RUN_TIME
-    #     value: PGPASSWORD
-    #   - key: APP_DATABASE__HOST
-    #     scope: RUN_TIME
-    #     value: PGHOST
-    #   - key: APP_DATABASE__PORT
-    #     scope: RUN_TIME
-    #     value: PGPORT
-    #   - key: APP_DATABASE__DATABASE_NAME
-    #     scope: RUN_TIME
-    #     value: PGDATABASE
+    envs:
+      - key: APP_DATABASE__USERNAME
+        scope: RUN_TIME
+        value: ${newsletter.USERNAME}
+      - key: APP_DATABASE__PASSWORD
+        scope: RUN_TIME
+        value: ${newsletter.PASSWORD}
+      - key: APP_DATABASE__HOST
+        scope: RUN_TIME
+        value: ${newsletter.HOSTNAME}
+      - key: APP_DATABASE__PORT
+        scope: RUN_TIME
+        value: ${newsletter.PORT}
+      - key: APP_DATABASE__DATABASE_NAME
+        scope: RUN_TIME
+        value: ${newsletter.DATABASE}
+databases:
+  # PG = Postgres
+  - engine: PG
+    # Database name
+    name: newsletter
+    # Again, let's keep the bill lean
+    num_nodes: 1
+    size: db-s-dev-database
+    # Postgres version - using the latest here
+    version: "14"
